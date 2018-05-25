@@ -2,26 +2,24 @@
  * @Author: Nundy 
  * @Date: 2018-05-19 08:26:53 
  * @Last Modified by: 我不是，我没有，别瞎说~ 这个Bug不是我写的
- * @Last Modified time: 2018-05-19 14:34:25
+ * @Last Modified time: 2018-05-25 19:30:23
  */
 
  /****************************************/
 // 引入express框架
-const express = require('express');
+const koa = require('koa');
+const route = require('koa-route');
+const serve = require('koa-static');
 // 引入node内置path模块
 const path = require('path');
 
-// 记录服务日志
-const logger = require('morgan');
 // 设置网站logo
 const favicon = require('serve-favicon');
 
 // HTTP请求体解析
 const bodyParser = require ('body-parser');
-// 管理cookie(设置、获取、删除),express-session依赖于它
-const cookieParser = require('cookie-parser');
 // 处理 enctype = "multipart/form-data" 表单数据
-const multer = require('multer');
+const multer = require('koa-multer');
 // 引入history模块,协助vue路由
 const history = require('connect-history-api-fallback');
 
@@ -40,7 +38,7 @@ const compiler = webpack(webpack_cfg);
 const router_cfg = require('./router/router');
 
 // 实例应用
-const app = express();
+const app = new koa();
 
 /****************************************/
 // 日志记录
@@ -68,7 +66,7 @@ if (ENV_STATUS == 'development' ){
 }
 
 // 设置静态文件路径,prod模式
-app.use(express.static(path.join(__dirname, 'views')));
+app.use(serve(path.join(__dirname, 'views')));
 
 // 启动服务
 app.listen(ENV_PORT, () => {
