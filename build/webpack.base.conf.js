@@ -1,9 +1,10 @@
 const path = require('path')
 const config = require('./config')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const utils = {
-  resolve: (dir)=>{
+  resolve: (dir) => {
     return path.join(__dirname, '..', dir)
   },
   assetsPath: (_path) => {
@@ -16,9 +17,7 @@ module.exports = {
     app: './src/client/index.js'
   },
   resolve: {
-    // 自动解析扩展
     extensions: ['.js', '.vue', '.json'],
-    // 解析别名
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': utils.resolve('src')
@@ -35,13 +34,13 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         include: utils.resolve('src')
-      }, 
+      },
       {
         test: /\.css$/,
         use: [
-            'MiniCssExtractPlugin.loader',
-            'style-loader',
-            'css-loader',
+          'MiniCssExtractPlugin.loader',
+          'style-loader',
+          'css-loader'
         ]
       },
       {

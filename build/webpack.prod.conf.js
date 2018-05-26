@@ -24,19 +24,24 @@ var webpackConfig = merge(baseWebpackConfig, {
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader"
+        ]
+      }
+    ]
+  },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': "production"
+      'process.env': 'production'
     }),
-    new UglifyJsPlugin(),
     new MiniCssExtractPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css'),
-      chunkFilename: "[id].css"
-    }),
-    new OptimizeCSSPlugin({
-      cssProcessorOptions: {
-        safe: true
-      }
+      chunkFilename: '[id].css'
     }),
     new HtmlWebpackPlugin({
       filename: config.build.index,
@@ -58,6 +63,14 @@ var webpackConfig = merge(baseWebpackConfig, {
     ])
   ],
   optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSPlugin({})
+    ],
     splitChunks: {
       cacheGroups: {
         commons: {
@@ -77,7 +90,6 @@ var webpackConfig = merge(baseWebpackConfig, {
     }
   }
 })
-
 
 if (config.build.bundleAnalyzerReport) {
   var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
