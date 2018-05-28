@@ -2,7 +2,7 @@
  * @Author: Nundy
  * @Date: 2018-05-19 08:26:53
  * @Last Modified by: 我不是，我没有，别瞎说~ 这个Bug不是我写的
- * @Last Modified time: 2018-05-28 09:31:00
+ * @Last Modified time: 2018-05-28 11:20:43
  */
 
 /****************************************/
@@ -19,7 +19,7 @@ const compile = webpack(webpackCfg)
 
 const path = require('path')
 const history = require('./config/history')
-const apiRouters = require('./routers')
+const apiRouters = require('./router')
 
 // 实例应用
 const app = new Koa()

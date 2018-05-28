@@ -30,7 +30,7 @@ const addRouters = (router, dir) => {
 }
 
 module.exports = function (dir) {
-  let controllersDir = dir || 'router'
+  let controllersDir = dir || 'routers'
   let router = require('koa-router')()
   addRouters(router, controllersDir)
   return router.routes()

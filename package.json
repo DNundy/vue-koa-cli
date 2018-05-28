@@ -4,15 +4,13 @@
   "description": "A whole vue-koa-cli",
   "main": "app.js",
   "scripts": {
-    "start"       : "npm run dev_all",
-
-    "dev_fe"      : "set NODE_ENV=development&&node app.js",
-    "dev_server"  : "set NODE_ENV=production&&nodemon app.js",
-    "dev_all"     : "set NODE_ENV=development&&nodemon app.js",
-
-    "prod_fe"     : "node build/build.js",
-    "prod_server" : "set NODE_ENV=production&&node app.js",
-    "prod_all"    : "set NODE_ENV=production&&node build/build.js&&node app.js"
+    "start": "npm run dev_all",
+    "dev_fe": "set NODE_ENV=development&&node app.js",
+    "dev_server": "set NODE_ENV=production&&nodemon app.js",
+    "dev_all": "set NODE_ENV=development&&nodemon app.js",
+    "prod_fe": "node build/build.js",
+    "prod_server": "set NODE_ENV=production&&node app.js",
+    "prod_all": "set NODE_ENV=production&&node build/build.js&&node app.js"
   },
   "author": "Nundy",
   "repository": "https://github.com/UniqueSirius/vue-koa-cli.git",
@@ -33,6 +31,7 @@
     "koa-webpack-middleware": "1.0.7",
     "mysql": "^2.15.0",
     "npm-check": "^5.7.1",
+    "sequelize": "4.37.10",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1"
   },
