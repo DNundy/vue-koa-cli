@@ -1,9 +1,6 @@
 {
   "verbose": true,
-  "ignore": ["src/server/public/"],
-  "watch": ["src/server/"],
-  "env": {
-    "NODE_ENV": "development"
-  },
+  "ignore": ["./src/server/public/"],
+  "watch": ["./src/server/"],
   "ext": "js"
 }

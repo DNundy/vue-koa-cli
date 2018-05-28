@@ -2,12 +2,11 @@
  * @Author: Nundy
  * @Date: 2018-05-19 08:26:53
  * @Last Modified by: 我不是，我没有，别瞎说~ 这个Bug不是我写的
- * @Last Modified time: 2018-05-26 22:08:36
+ * @Last Modified time: 2018-05-28 09:31:00
  */
 
 /****************************************/
 const Koa = require('koa')
-const router = require('koa-router')()
 const serve = require('koa-static')
 const logger = require('koa-morgan')
 const favicon = require('koa-favicon')
@@ -20,26 +19,21 @@ const compile = webpack(webpackCfg)
 
 const path = require('path')
 const history = require('./config/history')
-
-const ENV_STATUS = process.env.NODE_ENV
-const ENV_PORT = require('./config/basic').server_port
-
-const router = require('./router/router')
+const apiRouters = require('./routers')
 
 // 实例应用
 const app = new Koa()
 onerror(app)
 
-// 数据接口
-router.get('/api', router)
-app.use(router.routes())
+// REST API
+app.use(apiRouters())
 
 // 静态文件
 app.use(history({
   verbose: true
 }))
 app.use(favicon(path.join(__dirname, 'favicon.ico')))
-if (ENV_STATUS === 'development') {
+if (process.env.NODE_ENV === 'development') {
   app.use(middleware.devMiddleware(compile, {
     noInfo: false,
     quiet: false,
@@ -48,7 +42,7 @@ if (ENV_STATUS === 'development') {
       aggregateTimeout: 300,
       poll: true
     },
-    publicPath: "/",
+    publicPath: '/',
     stats: {
       colors: true
     }
@@ -66,8 +60,8 @@ if (ENV_STATUS === 'development') {
 app.use(logger('dev'))
 
 // 启动服务
-app.listen(ENV_PORT, () => {
-  console.info(`服务已经启动，监听端口${ENV_PORT}`)
+app.listen(3000, () => {
+  console.info('服务已经启动，监听端口3000')
 })
 
 module.exports = app

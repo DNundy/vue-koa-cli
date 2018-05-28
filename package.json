@@ -4,11 +4,15 @@
   "description": "A whole vue-koa-cli",
   "main": "app.js",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "nodemon app.js",
-    "prod": "set NODE_ENV=production&&node build/build.js&&node app.js",
-    "server": "set NODE_ENV=production&&node app.js",
-    "build": "node build/build.js"
+    "start"       : "npm run dev_all",
+
+    "dev_fe"      : "set NODE_ENV=development&&node app.js",
+    "dev_server"  : "set NODE_ENV=production&&nodemon app.js",
+    "dev_all"     : "set NODE_ENV=development&&nodemon app.js",
+
+    "prod_fe"     : "node build/build.js",
+    "prod_server" : "set NODE_ENV=production&&node app.js",
+    "prod_all"    : "set NODE_ENV=production&&node build/build.js&&node app.js"
   },
   "author": "Nundy",
   "repository": "https://github.com/UniqueSirius/vue-koa-cli.git",
@@ -56,6 +60,7 @@
     "nodemon": "^1.11.0",
     "optimize-css-assets-webpack-plugin": "^4.0.1",
     "ora": "^2.1.0",
+    "pm2": "2.10.4",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
