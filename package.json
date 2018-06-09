@@ -31,7 +31,6 @@
     "koa-webpack-middleware": "1.0.7",
     "mysql": "^2.15.0",
     "npm-check": "^5.7.1",
-    "sequelize": "4.37.10",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1"
   },

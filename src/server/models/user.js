@@ -1,8 +1,12 @@
-const user = require('../config/mysql')
+const _connect = require('../config/mysql')
 
-module.exports = user.defineModel('pets', {
-  ownerId: user.ID,
-  name: user.STRING(100),
-  gender: user.BOOLEAN,
-  birth: user.STRING(10)
-})
+const UserModel = {
+  info: {
+    get: async () => {
+      let sql = 'select * from trading_goods'
+      let dataList = await _connect(sql)
+      return dataList
+    }
+  }
+}
+module.exports = UserModel

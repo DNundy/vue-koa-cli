@@ -1,9 +1,14 @@
-const user = {
-  index: ctx => {
-    ctx.response.body = `test`
+const UserCtrl = require('../controllers/user')
+
+const UserRouter = {
+  info: {
+    get: ctx => {
+      console.log('router -> ')
+      ctx.response.body = UserCtrl.info.get
+    }
   }
 }
 
 module.exports = {
-  'GET /user/userinfo': user.index
+  'GET /user/userinfo': UserRouter.info.get
 }

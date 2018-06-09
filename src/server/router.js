@@ -29,7 +29,7 @@ const addRouters = (router, dir) => {
   })
 }
 
-module.exports = function (dir) {
+module.exports = (dir) => {
   let controllersDir = dir || 'routers'
   let router = require('koa-router')()
   addRouters(router, controllersDir)
