@@ -2,10 +2,7 @@ const UserCtrl = require('../controllers/user')
 
 const UserRouter = {
   info: {
-    get: ctx => {
-      console.log('router -> ')
-      ctx.response.body = UserCtrl.info.get
-    }
+    get: ctx => UserCtrl.info.get(ctx)
   }
 }
 

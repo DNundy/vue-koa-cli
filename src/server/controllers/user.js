@@ -2,13 +2,11 @@ const UserModel = require('../models/user')
 
 const UserCtrl = {
   info: {
-    get: () => {
-      console.log('ctrl -> ')
-      return UserModel.info.get()
+    get: (ctx) => {
+      UserModel.info.get(ctx)
+      console.log(UserModel.info.get(ctx))
     }
   }
 }
-
-console.log(UserModel.info.get)
 
 module.exports = UserCtrl

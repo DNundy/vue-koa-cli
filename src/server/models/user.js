@@ -2,10 +2,10 @@ const _connect = require('../config/mysql')
 
 const UserModel = {
   info: {
-    get: async () => {
+    get: async (ctx) => {
       let sql = 'select * from trading_goods'
-      let dataList = await _connect(sql)
-      return dataList
+      let data = await _connect(sql)
+      return data
     }
   }
 }

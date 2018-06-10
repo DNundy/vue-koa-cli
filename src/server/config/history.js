@@ -1,15 +1,15 @@
-const history = require('connect-history-api-fallback');
+const history = require('connect-history-api-fallback')
 
 module.exports = options => {
-    const middleware = history(options);
-    const noop = () => {
-    };
+  const middleware = history(options)
+  const noop = () => {
+  }
 
-    return async (ctx, next) => {
-        middleware(ctx, null, noop);
-        await next();
-    };
-};
+  return async (ctx, next) => {
+    middleware(ctx, null, noop)
+    await next()
+  }
+}
 
 /*
     调试时控制台有时会输出如下格式的提示，是因为该插件所导致的
